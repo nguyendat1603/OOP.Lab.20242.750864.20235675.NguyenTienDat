@@ -2,9 +2,9 @@ import java.util.Scanner;
 import java.util.Arrays;
 public class Array {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		
 		System.out.println("Hãy nhập số phần tử của mảng: ");
-		int n = scanner.nextInt();
+		int n = scanner.nextInt();Scanner scanner = new Scanner(System.in);
 		int[] mang = new int[n];
 		System.out.println("Hãy nhập từng phần tử của mảng: ");
 		int sum = 0;
