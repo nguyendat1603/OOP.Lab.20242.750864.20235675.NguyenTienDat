@@ -1,0 +1,52 @@
+14. Những lớp nào là tổng hợp của các lớp khác? Các thành phần có được khởi tạo đúng trong constructor không?
+Trong dự án AIMS, các lớp như CompactDisc, Cart, Store và Book có quan hệ tổng hợp (aggregation) với các lớp khác. Cụ thể:
+
+CompactDisc chứa danh sách các Track
+
+Cart và Store giữ danh sách các Media
+
+Book quản lý danh sách tên tác giả
+
+Tất cả những danh sách này đều được khởi tạo đúng cách bên trong constructor, nhằm đảm bảo không có lỗi null và chương trình hoạt động chính xác. Các lớp như Cart và Store phụ thuộc vào Media, vì vậy các constructor của chúng cần khởi tạo các thành phần liên quan một cách phù hợp.
+
+15. Điều gì xảy ra nếu truyền một đối tượng không phải là kiểu thích hợp vào phương thức equals()?
+Khi override phương thức equals() trong Java, nếu đối tượng được truyền vào không phải là kiểu mà ta đang so sánh (ví dụ không phải là Media), phép so sánh sẽ lập tức trả về false. Việc này được đảm bảo bởi điều kiện kiểm tra instanceof trước khi ép kiểu, giúp ngăn chặn lỗi ClassCastException. Ví dụ, nếu so sánh một đối tượng Media với một String, kết quả sẽ là false chứ không bị lỗi, đúng theo quy ước của Java về equals().
+
+16.1. Lợi ích của tính đa hình (Polymorphism) là gì?
+Đa hình giúp mã linh hoạt và dễ mở rộng hơn. Một phương thức hoặc đối tượng có thể được sử dụng theo nhiều cách khác nhau tùy ngữ cảnh. Điều này không chỉ giúp viết ít mã hơn mà còn làm cho chương trình dễ bảo trì và mở rộng.
+
+16.2. Kế thừa có vai trò như thế nào trong việc hỗ trợ đa hình?
+Kế thừa cho phép lớp con sử dụng lại và mở rộng các thuộc tính/phương thức của lớp cha. Khi lớp con override phương thức của lớp cha, và khi đối tượng được tham chiếu dưới kiểu lớp cha, Java sẽ gọi đúng phương thức override của lớp con. Đây chính là nguyên lý hoạt động cốt lõi của đa hình.
+
+16.3. Sự khác biệt giữa Kế thừa và Đa hình là gì?
+Kế thừa là mối quan hệ giữa hai lớp, nơi lớp con kế thừa từ lớp cha — chủ yếu dùng để tái sử dụng mã.
+
+Đa hình cho phép một phương thức hoạt động khác nhau tùy vào đối tượng thực thi — hỗ trợ override và overload phương thức.
+
+17.1. Lớp nào nên triển khai Comparable?
+Những lớp mà bạn muốn định nghĩa thứ tự sắp xếp mặc định nên implement interface Comparable.
+
+17.2. Cách triển khai compareTo() thế nào để phản ánh thứ tự mong muốn?
+Hàm compareTo() cần trả về:
+
+Số âm nếu đối tượng hiện tại < đối tượng kia
+
+0 nếu bằng nhau
+
+Số dương nếu lớn hơn
+
+Quy tắc này xác định cách sắp xếp mặc định của lớp đó.
+
+17.3. Có thể có nhiều quy tắc sắp xếp nếu dùng Comparable không?
+Không thể. Interface Comparable chỉ cho phép một quy tắc sắp xếp duy nhất (tự nhiên). Nếu bạn muốn sắp xếp theo nhiều tiêu chí khác nhau (title rồi cost, hoặc cost rồi title), bạn cần tạo các class Comparator riêng biệt.
+
+17.4. Nếu DVD có quy tắc sắp xếp khác với media khác (title → length giảm dần → cost), làm sao để xử lý?
+Bạn có thể override riêng phương thức compareTo() trong lớp DigitalVideoDisc. Trong đó, ta sẽ thực hiện so sánh:
+
+Theo tiêu đề (title)
+
+Nếu tiêu đề giống nhau → so sánh độ dài theo thứ tự giảm dần (length)
+
+Nếu vẫn giống → so sánh theo giá (cost)
+
+Việc này giúp DVD có logic sắp xếp riêng biệt mà không ảnh hưởng tới các lớp khác.
