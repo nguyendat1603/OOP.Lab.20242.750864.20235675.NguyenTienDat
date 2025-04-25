@@ -12,16 +12,6 @@ Tất cả những danh sách này đều được khởi tạo đúng cách bê
 15. Điều gì xảy ra nếu truyền một đối tượng không phải là kiểu thích hợp vào phương thức equals()?
 Khi override phương thức equals() trong Java, nếu đối tượng được truyền vào không phải là kiểu mà ta đang so sánh (ví dụ không phải là Media), phép so sánh sẽ lập tức trả về false. Việc này được đảm bảo bởi điều kiện kiểm tra instanceof trước khi ép kiểu, giúp ngăn chặn lỗi ClassCastException. Ví dụ, nếu so sánh một đối tượng Media với một String, kết quả sẽ là false chứ không bị lỗi, đúng theo quy ước của Java về equals().
 
-16.1. Lợi ích của tính đa hình (Polymorphism) là gì?
-Đa hình giúp mã linh hoạt và dễ mở rộng hơn. Một phương thức hoặc đối tượng có thể được sử dụng theo nhiều cách khác nhau tùy ngữ cảnh. Điều này không chỉ giúp viết ít mã hơn mà còn làm cho chương trình dễ bảo trì và mở rộng.
-
-16.2. Kế thừa có vai trò như thế nào trong việc hỗ trợ đa hình?
-Kế thừa cho phép lớp con sử dụng lại và mở rộng các thuộc tính/phương thức của lớp cha. Khi lớp con override phương thức của lớp cha, và khi đối tượng được tham chiếu dưới kiểu lớp cha, Java sẽ gọi đúng phương thức override của lớp con. Đây chính là nguyên lý hoạt động cốt lõi của đa hình.
-
-16.3. Sự khác biệt giữa Kế thừa và Đa hình là gì?
-Kế thừa là mối quan hệ giữa hai lớp, nơi lớp con kế thừa từ lớp cha — chủ yếu dùng để tái sử dụng mã.
-
-Đa hình cho phép một phương thức hoạt động khác nhau tùy vào đối tượng thực thi — hỗ trợ override và overload phương thức.
 
 17.1. Lớp nào nên triển khai Comparable?
 Những lớp mà bạn muốn định nghĩa thứ tự sắp xếp mặc định nên implement interface Comparable.
