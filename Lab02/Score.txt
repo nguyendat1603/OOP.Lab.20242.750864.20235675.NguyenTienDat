@@ -1,0 +1,3 @@
+Score: 8
+Comments: Biểu đồ Usecase thiếu quan hệ giữa actor và usecase, liên kết sử dụng sai mục đích
+          Quan hệ giữa Cart Class và DVD class sai
